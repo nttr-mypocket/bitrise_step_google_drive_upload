@@ -1,0 +1,36 @@
+title: |-
+  Bitrise step analyze android lint
+summary: |
+  Bitrise step analyze android lint
+description: |
+  Bitrise step analyze android lint
+website: https://github.com/nttr-mypocket/bitrise_step_google_drive_upload
+source_code_url: https://github.com/nttr-mypocket/bitrise_step_google_drive_upload
+support_url: https://github.com/nttr-mypocket/bitrise_step_google_drive_upload/issues
+type_tags:
+  - utility
+is_requires_admin_user: false
+is_always_run: true
+is_skippable: false
+deps:
+  brew:
+    - name: ruby
+  apt_get:
+    - name: ruby
+toolkit:
+  bash:
+    entry_file: step.sh
+inputs:
+  - project_location: $LINT_XML_OUTPUT
+    opts:
+      title: "Location to XML file"
+      description: "Location to XML file"
+      is_required: true
+      is_dont_change_value: true
+  - module: $LINT_HTML_OUTPUT
+    opts:
+      title: "Location to HTML file"
+      description: "Location to HTML file"
+      is_required: true
+      is_dont_change_value: true
+ 
