@@ -16,14 +16,14 @@ FOLDER_ID = ENV["drive_directory_id"]
 PRIVATE_KEY = ENV["service_account_private_key"].gsub("\\n", "\n")
 # GoogleCloudService プロジェクトのサービスアカウントのメールアドレス
 CLIENT_EMAIL = ENV["service_account_id"]
+# Content Type
+CONTENT_TYPE = ENV["output_content_type"]
 
 # 静的解析結果のファイル
-INPUT_XML_FILE = ENV["LINT_XML_OUTPUT"]
-INPUT_HTML_FILE = ENV["LINT_HTML_OUTPUT"]
+INPUT_FILE = ENV["lint_file"]
 
 # GoogleDriveへアップロードするファイルのファイル名
-OUTPUT_XML_FILE_NAME = ENV['lint_result.xml']
-OUTPUT_HTML_FILE_NAME = ENV['lint_result.html']
+OUTPUT_FILE_NAME = ENV['lint_output']
 
 # GoogleDriveAPIを初期化
 service = Google::Apis::DriveV3::DriveService.new
@@ -44,7 +44,7 @@ rescue StandardError => e
   throw e
 end
 
-def upload_files_to_google_drive(file_extension, input_file, output_file_name, service, logger)
+def upload_files_to_google_drive(content_type, input_file, output_file_name, service, logger)
   # GoogleDriveにファイルの存在を確認する
   existing_files = service.list_files(
     q: "name='#{output_file_name}' and parents in '#{FOLDER_ID}'", fields: 'files(id)'
@@ -56,7 +56,7 @@ def upload_files_to_google_drive(file_extension, input_file, output_file_name, s
     service.update_file(
       file_id,
       upload_source: input_file,
-      content_type: "text/#{file_extension}"
+      content_type: content_type
     )
 
     logger.info("#{file_extension} file updated on GoogleDrive successfully.")
@@ -72,7 +72,7 @@ def upload_files_to_google_drive(file_extension, input_file, output_file_name, s
       file_metadata,
       fields: 'id',
       upload_source: input_file,
-      content_type: "text/#{file_extension}"
+      content_type: content_type
     )
 
     logger.info("#{file_extension} file uploaded to GoogleDrive successfully.")
@@ -82,5 +82,4 @@ rescue StandardError => e
   throw e
 end
 
-upload_files_to_google_drive('xml', INPUT_XML_FILE, OUTPUT_XML_FILE_NAME, service, logger)
-upload_files_to_google_drive('html', INPUT_HTML_FILE, OUTPUT_HTML_FILE_NAME, service, logger)
+upload_files_to_google_drive(CONTENT_TYPE, INPUT_FILE, OUTPUT_FILE_NAME, service, logger)

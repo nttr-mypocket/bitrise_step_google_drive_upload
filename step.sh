@@ -7,10 +7,9 @@ echo "Start Google Drive Upload"
 
 echo "Print Enviroments"
 
-echo "  lint_xml: $lint_xml"
-echo "  lint_html: $lint_html"
-echo "  lint_xml_output_file_name: $lint_xml_output_file_name"
-echo "  lint_html_output_file_name: $lint_html_output_file_name"
+echo "  lint_file: $lint_file"
+echo "  lint_output: $lint_output"
+echo "  output_content_type: $output_content_type"
 echo "  service_account_private_key: ******************"
 echo "  service_account_id: $service_account_id"
 echo "  drive_directory_id: $drive_directory_id"
