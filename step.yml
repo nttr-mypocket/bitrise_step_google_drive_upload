@@ -21,16 +21,69 @@ toolkit:
   bash:
     entry_file: step.sh
 inputs:
-  - project_location: $LINT_XML_OUTPUT
+  - lint_xml: $LINT_XML_OUTPUT
     opts:
       title: "Location to XML file"
       description: "Location to XML file"
       is_required: true
-      is_dont_change_value: true
-  - module: $LINT_HTML_OUTPUT
+  - lint_html: $LINT_HTML_OUTPUT
     opts:
       title: "Location to HTML file"
       description: "Location to HTML file"
       is_required: true
+  - lint_xml_output_file_name: lint_result.xml
+    opts:
+      title: "Upload XML File"
+      description: "File Name on Google Drive"
+      is_required: true
+  - lint_html_output_file_name: lint_result.html
+    opts:
+      title: "Upload to HTML File"
+      description: "File Name on Google Drive"
+      is_required: true
+  - service_account_private_key:
+    opts:
+      title: "Service Account Private Key"
+      description: "on Google Cloud Platform"
+      is_required: true
+      is_sensitive: true
+  - service_account_id:
+    opts:
+      title: "Service Account Id"
+      description: "on Google Drive"
+      is_required: true
+  - drive_directory_id:
+    opts:
+      title: "Directory ID"
+      description: "on Google Drive"
+      is_required: true
+  - drive_base_directory_url: https://drive.google.com/drive/u/0/folders
+    opts:
+      title: "Base URL"
+      description: "on Google Drive"
+      is_required: true
       is_dont_change_value: true
+  - step_repository_url: https://github.com/nttr-mypocket/bitrise_step_google_drive_upload.git
+    opts:
+      category: Script Configuration
+      title: "Step Repository URL"
+      description: "Step Repository URL"
+      is_required: true
+  - step_upload_dir_branch: step-upload-folder
+    opts:
+      category: Script Configuration
+      title: "Step Clone Directory"
+      description: "Step Clone Directory"
+      is_required: true
+  - step_branch: main
+    opts:
+      category: Script Configuration
+      title: "Step Branch"
+      description: "Step Branch"
+      is_required: true
+outputs:
+  - GOOGLE_DRIVE_OUTPUT_URL:
+    opts:
+      title: "Uploaded Directory URL"
+      description: "on Google Drive"
  

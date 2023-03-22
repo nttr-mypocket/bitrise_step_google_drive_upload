@@ -11,20 +11,19 @@ logger = Logger.new($stderr)
 
 SCOPE = Google::Apis::DriveV3::AUTH_DRIVE_FILE
 # GoogleDriveに存在するアップロード先フォルダIDを指定
-FOLDER_ID = ENV["GOOGLE_DRIVE_FOLDER"]
+FOLDER_ID = ENV["drive_directory_id"]
 # GoogleCloudServiceにプロジェクトのサービスアカウント作成時の秘密鍵
-PRIVATE_KEY = ENV["SERVICE_PRIVATE_KEY"].gsub("\\n", "\n")
+PRIVATE_KEY = ENV["service_account_private_key"].gsub("\\n", "\n")
 # GoogleCloudService プロジェクトのサービスアカウントのメールアドレス
-CLIENT_EMAIL = ENV["SERVICE_CLIENT_EMAIL"]
+CLIENT_EMAIL = ENV["service_account_id"]
 
 # 静的解析結果のファイル
 INPUT_XML_FILE = ENV["LINT_XML_OUTPUT"]
 INPUT_HTML_FILE = ENV["LINT_HTML_OUTPUT"]
 
 # GoogleDriveへアップロードするファイルのファイル名
-OUTPUT_XML_FILE_NAME = 'lint_result.xml'
-OUTPUT_HTML_FILE_NAME = 'lint_result.html'
-
+OUTPUT_XML_FILE_NAME = ENV['lint_result.xml']
+OUTPUT_HTML_FILE_NAME = ENV['lint_result.html']
 
 # GoogleDriveAPIを初期化
 service = Google::Apis::DriveV3::DriveService.new
@@ -42,6 +41,7 @@ begin
   logger.info('Authorization successful')
 rescue StandardError => e
   logger.error("Authorization failed: #{e.message}")
+  throw e
 end
 
 def upload_files_to_google_drive(file_extension, input_file, output_file_name, service, logger)
@@ -79,7 +79,7 @@ def upload_files_to_google_drive(file_extension, input_file, output_file_name, s
   end
 rescue StandardError => e
   logger.error("Failed to create file: #{e.message}")
-  exit(1)
+  throw e
 end
 
 upload_files_to_google_drive('xml', INPUT_XML_FILE, OUTPUT_XML_FILE_NAME, service, logger)
