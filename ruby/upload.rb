@@ -44,7 +44,7 @@ rescue StandardError => e
   throw e
 end
 
-def upload_files_to_google_drive(content_type, input_file, output_file_name, service, logger)
+def upload_files_to_google_drive(content_type_v, input_file, output_file_name, service, logger)
   # GoogleDriveにファイルの存在を確認する
   existing_files = service.list_files(
     q: "name='#{output_file_name}' and parents in '#{FOLDER_ID}'", fields: 'files(id)'
@@ -56,7 +56,7 @@ def upload_files_to_google_drive(content_type, input_file, output_file_name, ser
     service.update_file(
       file_id,
       upload_source: input_file,
-      content_type: content_type
+      content_type: content_type_v
     )
 
     logger.info("#{file_extension} file updated on GoogleDrive successfully.")
@@ -72,7 +72,7 @@ def upload_files_to_google_drive(content_type, input_file, output_file_name, ser
       file_metadata,
       fields: 'id',
       upload_source: input_file,
-      content_type: content_type
+      content_type: content_type_v
     )
 
     logger.info("#{file_extension} file uploaded to GoogleDrive successfully.")
