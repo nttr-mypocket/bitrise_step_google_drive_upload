@@ -59,7 +59,7 @@ def upload_files_to_google_drive(content_type_v, input_file, output_file_name, s
       content_type: content_type_v
     )
 
-    logger.info("#{content_type_v} file updated on GoogleDrive successfully.")
+    logger.info("#{content_type_v} file(#{output_file_name}) updated on GoogleDrive successfully.")
   else
     # ファイル名とフォルダーを設定する
     file_metadata = {
@@ -75,7 +75,7 @@ def upload_files_to_google_drive(content_type_v, input_file, output_file_name, s
       content_type: content_type_v
     )
 
-    logger.info("#{content_type_v} file uploaded to GoogleDrive successfully.")
+    logger.info("#{content_type_v} file(#{output_file_name}) uploaded to GoogleDrive successfully.")
   end
 rescue StandardError => e
   logger.error("Failed to create file: #{e.message}")
