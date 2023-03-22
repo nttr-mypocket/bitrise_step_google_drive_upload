@@ -26,7 +26,12 @@ echo "  drive_directory_url: $drive_directory_url"
 
 # ステップのリポジトリをクローンする
 echo "Prepare Scripts file, with Git Clone. Dir: $scripts_dir"
-git clone -b $step_branch $step_repository_url $scripts_dir
+if [ -d "$scripts_dir" ]; then
+  echo "Directory '$scripts_dir' already exists."
+else
+  echo "Cloning branch '$step_branch' from repository '$step_repository_url' to directory '$scripts_dir'..."
+  git clone -b $step_branch $step_repository_url $scripts_dir
+fi
 echo "Prepared Scripts file."
 
 gem install google-apis-core
