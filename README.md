@@ -42,3 +42,10 @@ Then add all required variables according to the Requirements, and we are good t
 The step generates the following output variable:
 
 - `$GOOGLE_DRIVE_OUTPUT_URL` : The URL to the report file on the Google Drive.
+
+=======
+That's all ;)
+
+## Copyright
+
+Copyright © 2023 NTT Resonant Technology Inc. All Rights Reserved.
