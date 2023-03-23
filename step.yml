@@ -26,61 +26,61 @@ inputs:
   - lint_file:
     opts:
       title: "Location to file"
-      description: "on Google Drive"
+      description: "The path to the file to be uploaded on Google Drive."
       is_required: true
   - lint_output:
     opts:
       title: "Output file"
-      description: "on Google Drive"
+      description: The output file name that be stored on Google Drive."
       is_required: true
   - output_content_type:
     opts:
       title: "Content Type"
-      description: "text/xml, text/html..."
+      description: "The content type of the uploaded file (e.g. text/xml, text/html)."
       is_required: true
   - service_account_private_key:
     opts:
       title: "Service Account Private Key"
-      description: "on Google Cloud Platform"
+      description: "The private key of the service account on Google Cloud Platform."
       is_required: true
       is_sensitive: true
   - service_account_id:
     opts:
       title: "Service Account Id"
-      description: "on Google Drive"
+      description: "The email of the service account on Google Clout Platform"
       is_required: true
   - drive_directory_id:
     opts:
       title: "Directory ID"
-      description: "on Google Drive"
+      description: "The ID of the directory on Google Drive where the file will be uploaded."
       is_required: true
   - drive_base_directory_url: https://drive.google.com/drive/u/0/folders
     opts:
       title: "Base URL"
-      description: "on Google Drive"
+      description: "The base URL of the directory on Google Drive where the file will be uploaded."
       is_required: true
       is_dont_change_value: true
   - step_repository_url: https://github.com/nttr-mypocket/bitrise_step_google_drive_upload.git
     opts:
       category: Script Configuration
       title: "Step Repository URL"
-      description: "Step Repository URL"
+      description: "The repository URL of the step"
       is_required: true
   - step_upload_dir_branch: step-upload-folder
     opts:
       category: Script Configuration
       title: "Step Clone Directory"
-      description: "Step Clone Directory"
+      description: "The clone directory of the step."
       is_required: true
   - step_branch: main
     opts:
       category: Script Configuration
       title: "Step Branch"
-      description: "Step Branch"
+      description: "The branch of the step."
       is_required: true
 outputs:
   - GOOGLE_DRIVE_OUTPUT_URL:
     opts:
       title: "Uploaded Directory URL"
-      description: "on Google Drive"
+      description: "The URL of the uploaded directory on Google Drive."
  
