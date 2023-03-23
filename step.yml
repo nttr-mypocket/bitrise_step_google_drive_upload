@@ -51,7 +51,7 @@ inputs:
       is_required: true
   - drive_directory_id:
     opts:
-      title: "Directory ID"
+      title: "Google Drive Directory ID"
       description: "The ID of the directory on Google Drive where the file will be uploaded. Usually looks like this: https://drive.google.com/drive/u/0/folders/ID_OF_THE_FOLDER"
       is_required: true
   - drive_base_directory_url: https://drive.google.com/drive/u/0/folders

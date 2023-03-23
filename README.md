@@ -12,7 +12,7 @@ Use this Bitrise step to upload a file to Google Drive folder. You can choose to
     3. `Content Type` : The type for the output file, ether XML or HTML.
     4. `Service Account Private Key` : The secret key which was provided for your Google Service account. **Do not save this value in `Env Vars`, use `Secrets`.**
     5. `Service Account ID` : In other words the service email which was provided for your Google Service account.
-    6. `Directory ID` : Google Drive folder ID. Usually looks like this: `https://drive.google.com/drive/u/0/folders/ID_OF_THE_FOLDER`.
+    6. `Google Drive Directory ID` : Google Drive folder ID. Usually looks like this: `https://drive.google.com/drive/u/0/folders/ID_OF_THE_FOLDER`.
 
 ## How to use this Step
 
