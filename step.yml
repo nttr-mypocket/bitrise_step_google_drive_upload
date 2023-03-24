@@ -31,12 +31,12 @@ inputs:
   - lint_output:
     opts:
       title: "Output file"
-      description: The output file name that be stored on Google Drive."
+      description: "The output file name that be stored on Google Drive."
       is_required: true
   - output_content_type:
     opts:
       title: "Content Type"
-      description: "The content type of the uploaded file (e.g. text/xml, text/html)."
+      description: "The content type of the uploaded file (e.g. text/xml, text/html)"
       is_required: true
   - service_account_private_key:
     opts:
@@ -52,7 +52,7 @@ inputs:
   - drive_directory_id:
     opts:
       title: "Google Drive Directory ID"
-      description: "The ID of the directory on Google Drive where the file will be uploaded. Usually looks like this: https://drive.google.com/drive/u/0/folders/ID_OF_THE_FOLDER"
+      description: "The ID of the directory on Google Drive where the file will be uploaded. Usually looks like this: https://drive.google.com/drive/u/0/folders/FOLDERID"
       is_required: true
   - drive_base_directory_url: https://drive.google.com/drive/u/0/folders
     opts:
@@ -64,7 +64,7 @@ inputs:
     opts:
       category: Script Configuration
       title: "Step Repository URL"
-      description: "The repository URL of the step"
+      description: "The repository URL of the step."
       is_required: true
   - step_upload_dir_branch: step-upload-folder
     opts:
